@@ -23,11 +23,15 @@ def docs_add(docs):
     db.persist()
 
 def token_count(splits, model = "gpt-3.5-turbo"):
+    """splits: Documents or str"""
     encoding = encoding_for_model(model)
     token_count = 0
-    for split in splits:
-        token_count += len(encoding.encode(split.page_content))
-    print("token_count: "+token_count)
+    if isinstance(splits, str):
+        token_count = len(encoding.encode(splits))
+    else:
+        for split in splits:
+            token_count += len(encoding.encode(split.page_content))
+    return token_count
 
 
 def show_search(query, db):
