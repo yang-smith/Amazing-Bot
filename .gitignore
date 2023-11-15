@@ -1,2 +1,4 @@
 amazing-bot
 .env
+__pycache__
+errors.log
