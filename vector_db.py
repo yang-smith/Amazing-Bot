@@ -14,8 +14,9 @@ def db_init():
         documents = loader.load()   
         text_splitter = RecursiveCharacterTextSplitter(chunk_size=500, chunk_overlap=20)
         docs = text_splitter.split_documents(documents)
-        db = Chroma.from_documents(documents=docs, embedding=OpenAIEmbeddings())
-        db.persist(persist_directory="./chroma_db")
+        db = Chroma.from_documents(documents=docs, embedding=OpenAIEmbeddings(),persist_directory="./chroma_db")
+        db.persist()
+    return Chroma(embedding_function=OpenAIEmbeddings(), persist_directory='./chroma_db')
 
 def docs_add(docs):
     db = Chroma.from_documents(embedding=OpenAIEmbeddings(), persist_directory="./chroma_db")
