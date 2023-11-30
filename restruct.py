@@ -25,3 +25,33 @@ def restruct():
         splits = splitter.split_documents(docs)
         return splits
     return None
+
+
+def restruct_collect(json_data):
+
+    content = json_data.get("content", "")
+    raw_metadata = json_data.get("metadata", {})
+    
+    # Filter out empty or 'unknown' values from metadata
+    metadata = {
+        k: v for k, v in raw_metadata.items()
+        if v and (v.lower() != "unknown" if isinstance(v, str) else True)
+    }
+    doc = Document(page_content=content, metadata=metadata)
+    splitter = RecursiveCharacterTextSplitter(chunk_size=500, chunk_overlap=20)
+    splits = splitter.split_documents([doc])
+    return splits
+
+
+# 示例使用
+json_input = {
+    "content": " ctis not well-formatted.",
+    "metadata": {
+        "source": "",
+        "author": "bs",
+        "tags": []
+    }
+}
+
+document = restruct_collect(json_input)
+print(document)
