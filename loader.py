@@ -2,6 +2,7 @@ from langchain.document_loaders import WebBaseLoader
 from langchain.document_loaders import BiliBiliLoader
 from langchain.document_loaders import NewsURLLoader
 
+
 loader_map = {
     'news': NewsURLLoader,
     'blibli': BiliBiliLoader,

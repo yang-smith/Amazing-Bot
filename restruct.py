@@ -6,6 +6,7 @@ from loader import get_loader
 from vector_db import show_search, db_init, docs_add, token_count
 import logging
 from langchain.text_splitter import RecursiveCharacterTextSplitter
+from langchain.schema import Document
 
 def restruct():
     docs = []
