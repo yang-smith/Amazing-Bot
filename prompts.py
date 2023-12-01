@@ -57,11 +57,26 @@ Directly output json
 {format_instruction}\n{query}
 """
 
-prompt_vector = """Answer the question based on the following context:
+prompt_vector = """
+请你基于知识库的参考内容回答问题。
+知识库里的参考内容：
 {context}
 
 Question: {question}
-思考步骤：首先排除与问题不相干的参考文本。基于合理的参考内容，回答问题。
- Let’s first understand the problem and devise a plan to solve the problem. Then, let’s carry out the plan and solve the problem step by step.
-Attention: 使用中文回答
+
+####思考步骤
+take a deep breath and think step by step
+定义问题：首先明确理解所提出的问题。
+收集信息：查看并理解提供的参考内容。
+分析信息：分析参考内容，确定其风格、语气,表达结构，以及有助于回答问题的部分。
+提出假设：基于参考内容提出一个初步的答案。
+测试假设：检查这个答案是否有效地回答了问题，并保持了参考内容的风格和语气。
+得出结论：如果这个答案能够有效回答问题，则输出回答。如果不足以回答问题，从头开始重新思考。
+
+限制条件
+GPT需要准确判断参考内容是否与提出的问题相关。
+在答案中应保持参考内容的风格和语气。
+不要说出思考过程
+回答使用问题对应的语言。
+你可以直接引用知识库的参考内容
 """

@@ -25,9 +25,9 @@ def db_test():
         model = ChatOpenAI(model="gpt-3.5-turbo")
         prompt = ChatPromptTemplate.from_template(prompt_vector)
 
-        counts = token_count(prompt_vector)
-        price = calculate_price('gpt-3.5-turbo', counts, True)
-        print("token_count:"+ str(counts) + "   price:"+ str(price))
+        # counts = token_count(prompt_vector)
+        # price = calculate_price('gpt-3.5-turbo', counts, True)
+        # print("token_count:"+ str(counts) + "   price:"+ str(price))
 
         chain = prompt | model
         while True:
@@ -97,4 +97,5 @@ def main():
 
 if __name__ == '__main__':
     # main()
-    parse()
+    # parse()
+    db_test()
