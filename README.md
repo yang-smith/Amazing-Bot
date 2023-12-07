@@ -24,3 +24,7 @@ which you want change
    3. add to db
 2. set goal
    1. chat more
+
+
+
+add and search function frist
