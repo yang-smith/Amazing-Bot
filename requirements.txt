@@ -4,3 +4,4 @@ beautifulsoup4  == 4.12.2
 tiktoken    ==    0.5.1
 chromadb    ==    0.4.14
 newspaper3k
+python-telegram-bot
